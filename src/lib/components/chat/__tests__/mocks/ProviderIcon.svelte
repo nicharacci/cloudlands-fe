@@ -5,6 +5,7 @@
     'claude-code',
     'codex',
     'opencode',
+    'devin',
     'droid',
     'grok',
     'unsloth',

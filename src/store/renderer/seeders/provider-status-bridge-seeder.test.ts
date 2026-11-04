@@ -83,6 +83,7 @@ const NO_TOOLS = {
     claude: { available: false },
     codex: { available: false },
     cortex: { available: false },
+    devin: { available: false },
     opencode: { available: false },
     pi: { available: false },
     droid: { available: false },
@@ -100,6 +101,7 @@ const AUTH_PROVIDER_IDS = [
   'codex',
   'opencode',
   'pi',
+  'devin',
   'droid',
   'grok',
 ] as const;
@@ -324,6 +326,7 @@ describe('provider-status-bridge-seeder', () => {
               tools: [
                 'codex',
                 'cortex',
+                'devin',
                 'opencode',
                 'pi',
                 'droid',
@@ -502,6 +505,7 @@ describe('provider-status-bridge-seeder', () => {
         tools: [
           'codex',
           'cortex',
+          'devin',
           'opencode',
           'pi',
           'droid',

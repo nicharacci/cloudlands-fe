@@ -310,6 +310,7 @@ import { setupClaudeCodeIPC } from '../features/claude-code/main/claude-code.ipc
 import { setupPiIPC } from '../features/pi/main/pi.ipc';
 import { setupCodexIPC } from '../features/codex/main/codex.ipc';
 import { setupCortexIPC } from '../features/cortex/main/cortex.ipc';
+import { setupDevinIPC } from '../features/devin/main/devin.ipc';
 import { setupDroidIPC } from '../features/droid/main/droid.ipc';
 import { setupGrokIPC } from '../features/grok/main/grok.ipc';
 import { setupUnslothIPC } from '../features/unsloth/main/unsloth.ipc';
@@ -1611,6 +1612,7 @@ const bootFlow = app.whenReady().then(async () => {
   setupCodexIPC(); // Needed for codex:get-models
   setupCortexIPC(); // Needed for cortex:get-models
   setupPiIPC(); // Needed for pi:get-models
+  setupDevinIPC(); // Needed for devin:get-models
   setupDroidIPC(); // Needed for droid:get-models
   setupGrokIPC(); // Needed for grok:get-models
   setupUnslothIPC(); // Needed for unsloth:get-models

@@ -61,6 +61,7 @@ import { setupAuggieIPC } from '../auggie/main/auggie.ipc';
 import { setupClaudeCodeIPC } from '../claude-code/main/claude-code.ipc';
 import { setupCodexIPC } from '../codex/main/codex.ipc';
 import { setupCortexIPC } from '../cortex/main/cortex.ipc';
+import { setupDevinIPC } from '../devin/main/devin.ipc';
 import { setupDroidIPC } from '../droid/main/droid.ipc';
 import { setupGrokIPC } from '../grok/main/grok.ipc';
 import { setupOpencodeIPC } from '../opencode/main/opencode.ipc';
@@ -171,6 +172,7 @@ describeParity('codex:get-models', () => modelsParity('codex', 'codex:get-models
 describeParity('cortex:get-models', () =>
   modelsParity('cortex', 'cortex:get-models', setupCortexIPC),
 );
+describeParity('devin:get-models', () => modelsParity('devin', 'devin:get-models', setupDevinIPC));
 describeParity('droid:get-models', () => modelsParity('droid', 'droid:get-models', setupDroidIPC));
 describeParity('grok:get-models', () => modelsParity('grok', 'grok:get-models', setupGrokIPC));
 describeParity('opencode:get-models', () =>

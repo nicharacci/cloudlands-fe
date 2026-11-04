@@ -25,7 +25,7 @@
  *                 adapter). When the CLI is present but neither a local
  *                 `codex-acp` nor npx (the pinned adapter fallback runner)
  *                 resolves, a warning is attached.
- *  - cortex / opencode / pi / droid / grok: binary presence via
+ *  - cortex / opencode / pi / droid / grok / devin: binary presence via
  *                 `host.toolAvailability` / `host.findBinary`.
  *  - unsloth:     rides the opencode binary (the daemon injects the managed
  *                 local server's config via OPENCODE_CONFIG_CONTENT) AND the
@@ -98,6 +98,7 @@ interface HostToolAvailabilityResult {
 const PROVIDER_BINARIES: Record<string, string> = {
   codex: 'codex',
   cortex: 'cortex',
+  devin: 'devin',
   opencode: 'opencode',
   pi: 'pi',
   droid: 'droid',
@@ -234,6 +235,7 @@ async function getProviderAvailability(): Promise<ProviderAvailabilityResult> {
     available: tool(PROVIDER_BINARIES.opencode).available === true,
   };
   const pi: ProviderStatus = { available: tool(PROVIDER_BINARIES.pi).available === true };
+  const devin: ProviderStatus = { available: tool(PROVIDER_BINARIES.devin).available === true };
   const droid: ProviderStatus = { available: tool(PROVIDER_BINARIES.droid).available === true };
   const grok: ProviderStatus = { available: tool(PROVIDER_BINARIES.grok).available === true };
   // unsloth rides the opencode binary AND requires the unsloth CLI itself
@@ -250,6 +252,7 @@ async function getProviderAvailability(): Promise<ProviderAvailabilityResult> {
   withAuth(codex, authVerdicts['codex']);
   withAuth(opencode, authVerdicts['opencode']);
   withAuth(pi, authVerdicts['pi']);
+  withAuth(devin, authVerdicts['devin']);
   withAuth(droid, authVerdicts['droid']);
   withAuth(grok, authVerdicts['grok']);
   withAuth(antigravity, authVerdicts['antigravity']);
@@ -263,6 +266,7 @@ async function getProviderAvailability(): Promise<ProviderAvailabilityResult> {
       mock.available ||
       opencode.available ||
       pi.available ||
+      devin.available ||
       droid.available ||
       grok.available ||
       unsloth.available ||
@@ -275,6 +279,7 @@ async function getProviderAvailability(): Promise<ProviderAvailabilityResult> {
       mock,
       opencode,
       pi,
+      devin,
       droid,
       grok,
       unsloth,

@@ -124,6 +124,19 @@ async function checkGrokAvailability(): Promise<ProviderStatus> {
 }
 
 /**
+ * Check if devin is available by resolving its binary on the daemon host.
+ * Devin has no FE-side resolver/probe module: availability comes from the
+ * daemon's provider discovery (aggregate path) and from `host.findBinary`
+ * (single-recheck path). Auth comes from `host.providerAuthStatus`, attached
+ * by the callers.
+ */
+async function checkDevinAvailability(): Promise<ProviderStatus> {
+  // Every call hits the daemon so a fresh install is picked up on recheck.
+  const devinPath = await findBinaryStrict('devin');
+  return { available: devinPath !== null };
+}
+
+/**
  * Check if unsloth is available. Unsloth rides the opencode binary as its
  * ACP runtime (the daemon injects the managed local server's config via
  * OPENCODE_CONFIG_CONTENT), but the daemon-managed server lifecycle also
@@ -289,6 +302,12 @@ export function setupProviderAvailabilityIPC(): void {
           case 'pi':
             clearPiCache();
             status = await checkPiAvailability();
+            if (status.available) {
+              authenticated = await checkAuth();
+            }
+            break;
+          case 'devin':
+            status = await checkDevinAvailability();
             if (status.available) {
               authenticated = await checkAuth();
             }

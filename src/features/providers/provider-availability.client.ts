@@ -43,6 +43,7 @@ export interface ProviderAvailabilityResult {
     opencode: ProviderStatus;
     cortex: ProviderStatus;
     pi: ProviderStatus;
+    devin?: ProviderStatus;
     droid: ProviderStatus;
     grok: ProviderStatus;
     unsloth: ProviderStatus;

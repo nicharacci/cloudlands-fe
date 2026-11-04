@@ -77,6 +77,16 @@ export const MOCK_PROVIDER_CATALOG: ProviderCatalogResult = {
       visible: true,
     },
     {
+      id: 'devin',
+      displayName: 'Cognition Devin',
+      shortName: 'Devin',
+      command: 'devin',
+      canBeDisabled: true,
+      loginCommandHint: 'devin auth login',
+      loginDocsUrl: 'https://docs.devin.ai',
+      visible: true,
+    },
+    {
       id: 'droid',
       displayName: 'Factory Droid',
       shortName: 'Droid',

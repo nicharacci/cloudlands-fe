@@ -47,6 +47,8 @@ export interface ProviderAvailabilityResult {
     mock: ProviderStatus;
     opencode: ProviderStatus;
     pi: ProviderStatus;
+    /** Absent when connected to a daemon without Devin support. */
+    devin?: ProviderStatus;
     droid: ProviderStatus;
     grok: ProviderStatus;
     unsloth: ProviderStatus;
@@ -81,6 +83,7 @@ export const PROVIDER_AVAILABILITY_KEY_TO_ID: Record<string, string> = {
   opencode: 'opencode',
   pi: 'pi',
   cortex: 'cortex',
+  devin: 'devin',
   droid: 'droid',
   grok: 'grok',
   unsloth: 'unsloth',

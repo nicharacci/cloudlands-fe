@@ -228,6 +228,11 @@ export const IPC_CHANNELS = {
     GET_MODELS: 'pi:get-models',
   },
 
+  // Cognition Devin Integration
+  DEVIN: {
+    GET_MODELS: 'devin:get-models',
+  },
+
   // Factory Droid Integration
   DROID: {
     GET_MODELS: 'droid:get-models',
